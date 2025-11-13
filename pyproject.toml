@@ -1,0 +1,25 @@
+[project]
+name = "lib-native"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Nathan Blum", email = "n.blum@student.tudelft.nl" }
+]
+requires-python = ">=3.10"
+dependencies = [
+    "pybind11>=2.13.0",
+]
+
+[build-system]
+requires = ["scikit-build-core>=0.10", "pybind11>=2.13.0"]
+build-backend = "scikit_build_core.build"
+
+[tool.scikit-build]
+# Specify where to find source files
+cmake.source-dir = "."
+# Minimum CMake version
+cmake.minimum-version = "3.15"
+# Build directory
+build-dir = "build/{wheel_tag}"
+

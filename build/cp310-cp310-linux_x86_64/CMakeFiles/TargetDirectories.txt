@@ -1,0 +1,7 @@
+/home/nathan/NemadGroep/ordrsp-full-stack/shared/lib-native/build/cp310-cp310-linux_x86_64/CMakeFiles/_core.dir
+/home/nathan/NemadGroep/ordrsp-full-stack/shared/lib-native/build/cp310-cp310-linux_x86_64/CMakeFiles/edit_cache.dir
+/home/nathan/NemadGroep/ordrsp-full-stack/shared/lib-native/build/cp310-cp310-linux_x86_64/CMakeFiles/rebuild_cache.dir
+/home/nathan/NemadGroep/ordrsp-full-stack/shared/lib-native/build/cp310-cp310-linux_x86_64/CMakeFiles/list_install_components.dir
+/home/nathan/NemadGroep/ordrsp-full-stack/shared/lib-native/build/cp310-cp310-linux_x86_64/CMakeFiles/install.dir
+/home/nathan/NemadGroep/ordrsp-full-stack/shared/lib-native/build/cp310-cp310-linux_x86_64/CMakeFiles/install/local.dir
+/home/nathan/NemadGroep/ordrsp-full-stack/shared/lib-native/build/cp310-cp310-linux_x86_64/CMakeFiles/install/strip.dir

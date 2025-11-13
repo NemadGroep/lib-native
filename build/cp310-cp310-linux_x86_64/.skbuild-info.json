@@ -1,0 +1,8 @@
+{
+  "source_dir": "/home/nathan/NemadGroep/ordrsp-full-stack/shared/lib-native",
+  "build_dir": "/home/nathan/NemadGroep/ordrsp-full-stack/shared/lib-native/build/cp310-cp310-linux_x86_64",
+  "cmake_path": "/usr/bin/cmake",
+  "skbuild_path": "/home/nathan/.cache/uv/builds-v0/.tmp4CHlrP/lib/python3.10/site-packages/scikit_build_core",
+  "skbuild_version": "0.11.6",
+  "python_executable": "/home/nathan/.cache/uv/builds-v0/.tmp4CHlrP/bin/python"
+}
