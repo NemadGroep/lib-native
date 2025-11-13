@@ -1,5 +1,0 @@
-# ninja log v7
-1	3989	1763026126553178862	CMakeFiles/_core.dir/src/lib_native/binding.cpp.o	dd6e3294119682ab
-3989	4054	1763026130541171568	_core.cpython-310-x86_64-linux-gnu.so	1ab83dc9ec3d8a47
-2	3775	1763027934277403061	CMakeFiles/_core.dir/src/lib_native/binding.cpp.o	a757dac4b4dc4a58
-3775	3832	1763027938050403219	_core.cpython-310-x86_64-linux-gnu.so	1ab83dc9ec3d8a47
