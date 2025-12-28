@@ -13,6 +13,8 @@ int add(int i, int j) {
     return result;
 }
 
+const int e = {20};
+
 PYBIND11_MODULE(_core, m) {
     m.doc() = "Native C++ extensions for lib-native";
 
