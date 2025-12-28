@@ -1,0 +1,71 @@
+name: Release Python wheels (lib-native)
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+
+jobs:
+  build-wheels:
+    name: Build wheels (Linux)
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Debug package directory
+        run: |
+          echo "PWD=$(pwd)"
+          echo "--- repo root ---"
+          ls -la
+          echo "--- pyproject.toml ---"
+          sed -n '1,120p' pyproject.toml
+
+      - name: Build wheels
+        uses: pypa/cibuildwheel@v2.20.0
+        with:
+          package-dir: .
+          output-dir: wheelhouse
+        env:
+          # Use a modern manylinux image and avoid distro package managers in before_all.
+          # We rely on the image's compiler toolchain and install build tooling via pip.
+          CIBW_MANYLINUX_X86_64_IMAGE: manylinux_2_28
+          CIBW_BEFORE_ALL_LINUX: >
+            python -m pip install -U pip &&
+            python -m pip install -U cmake pybind11
+          # Limit wheels to CPython 3.10 for now (matches requires-python)
+          CIBW_BUILD: "cp310-*"
+
+      - name: Upload wheel artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: lib-native-wheels
+          path: wheelhouse/*.whl
+          if-no-files-found: error
+
+  publish-github-release:
+    name: Attach wheels to GitHub Release
+    runs-on: ubuntu-22.04
+    needs: [build-wheels]
+    steps:
+      - name: Download wheel artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: lib-native-wheels
+          path: dist
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.whl
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,13 +1,17 @@
-cmake_minimum_required(VERSION 3.15...3.27)
-project(${SKBUILD_PROJECT_NAME} LANGUAGES CXX)
+cmake_minimum_required(VERSION 3.16)
+project(lib_native LANGUAGES CXX)
 
-# Find Python and pybind11
-find_package(Python REQUIRED COMPONENTS Interpreter Development.Module)
-find_package(pybind11 CONFIG REQUIRED)
+find_package(Python3 REQUIRED COMPONENTS Interpreter Development.Module)
+find_package(pybind11 REQUIRED)
 
-# Create the Python extension module
-python_add_library(_core MODULE src/lib_native/binding.cpp WITH_SOABI)
-target_link_libraries(_core PRIVATE pybind11::headers)
+# Build the extension module.
+# The Python package lives in src/lib_native; we install the compiled module
+# into that package so scikit-build-core can bundle it into the wheel.
+pybind11_add_module(_core src/lib_native/binding.cpp)
 
-# Install the extension module
-install(TARGETS _core DESTINATION ${SKBUILD_PROJECT_NAME})
+# When building a wheel, install into the package directory (NOT system site-packages).
+install(
+  TARGETS _core
+  LIBRARY DESTINATION lib_native
+  RUNTIME DESTINATION lib_native
+)
